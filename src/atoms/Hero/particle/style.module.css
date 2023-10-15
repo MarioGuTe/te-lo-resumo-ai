@@ -1,0 +1,27 @@
+.hero_section {
+  /* border: 2px solid black; */
+  text-align: center;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  margin-top: 1.25rem;
+}
+
+.hero_section h1 {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.hero_section span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: var(--primary-color);
+  color: transparent;
+}
+
+.hero_section h2 {
+  margin-top: 1.25rem;
+  color: rgb(75 85 99);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
