@@ -8,7 +8,7 @@ const Header = () => {
       <div className={s.logo_container}>
         <img src={spinner} alt="logo" />
         <ul>
-          <li className={s.list_text}>Te Lo Resumo</li>
+          <li className={s.list_text}>SINTESIS</li>
         </ul>
       </div>
       <button>Github</button>
