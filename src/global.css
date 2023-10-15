@@ -1,0 +1,15 @@
+:root {
+  --primary-color: linear-gradient(
+    89.9deg,
+    rgb(102, 64, 123) 0%,
+    rgb(252, 41, 119) 100%,
+    rgb(251, 168, 214) 100.1%
+  );
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Satoshi", sans-serif; */
+}
