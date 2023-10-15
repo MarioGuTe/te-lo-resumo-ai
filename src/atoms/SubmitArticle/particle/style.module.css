@@ -1,0 +1,42 @@
+.input_section {
+  margin-top: 4rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.input_section form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_section img {
+  position: absolute;
+  left: 0;
+  margin: 0.5rem 0rem 0.5rem 0.75rem;
+  width: 1.25rem;
+}
+
+.input_section input {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  border-color: rgb(229 231 235);
+  background-color: rgb(255 255 255);
+  padding: 0.625rem 3rem 0.625rem 2.5rem;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.input_section input:focus {
+  border-color: rgb(0 0 0);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  /* box-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width))
+    var(--tw-ring-color); */
+}
