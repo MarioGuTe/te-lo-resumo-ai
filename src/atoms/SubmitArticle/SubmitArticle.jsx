@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { linkIcon } from "../../assets";
+import { useLazyGetSummaryQuery } from "../../services/article";
 import s from "./particle/style.module.css";
 
 const SubmitArticle = () => {
@@ -8,9 +9,17 @@ const SubmitArticle = () => {
     summary: "",
   });
 
+  const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("submitted");
+    const { data } = await getSummary({ articleUrl: article.url });
+
+    if (data?.summary) {
+      const newArticle = { ...article, summary: data.summary };
+      setArticle(newArticle);
+      console.log(newArticle);
+    }
   };
 
   return (
