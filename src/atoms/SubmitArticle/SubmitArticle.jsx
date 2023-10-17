@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { linkIcon } from "../../assets";
 import { useLazyGetSummaryQuery } from "../../services/article";
+import UrlList from "../UrlList/UrlList";
 import s from "./particle/style.module.css";
 
 const SubmitArticle = () => {
@@ -9,7 +10,19 @@ const SubmitArticle = () => {
     summary: "",
   });
 
+  const [articleHistory, setArticleHistory] = useState([]);
+
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+
+  useEffect(() => {
+    const articlesFromLocalStorage = JSON.parse(
+      localStorage.getItem("articles")
+    );
+
+    if (articlesFromLocalStorage.length > 0) {
+      setArticleHistory(articlesFromLocalStorage);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,8 +30,11 @@ const SubmitArticle = () => {
 
     if (data?.summary) {
       const newArticle = { ...article, summary: data.summary };
+      const updatedArticleHistory = [newArticle, ...articleHistory];
       setArticle(newArticle);
-      console.log(newArticle);
+      setArticleHistory(updatedArticleHistory);
+
+      localStorage.setItem("articles", JSON.stringify(updatedArticleHistory));
     }
   };
 
@@ -37,6 +53,9 @@ const SubmitArticle = () => {
           <p>↵</p>
         </button>
       </form>
+      <div>
+        <UrlList articleList={articleHistory} />
+      </div>
     </section>
   );
 };
