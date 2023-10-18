@@ -6,17 +6,15 @@
   align-items: center;
   border-radius: 9999px;
   background: rgb(235, 234, 234);
-
   position: relative;
 }
 
 .copy_button img {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  margin: auto;
+  transform: translate(-25%, 15%);
+  width: 100%;
+  left: 50%;
+  bottom: 5%;
   opacity: 0.8;
 }
 
