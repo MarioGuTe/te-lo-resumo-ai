@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { copy } from "../../assets";
 import s from "./particle/style.module.css";
 
@@ -13,3 +14,7 @@ const UrlListItem = ({ articleUrl }) => {
 };
 
 export default UrlListItem;
+
+UrlListItem.propTypes = {
+  articleUrl: PropTypes.string,
+};
