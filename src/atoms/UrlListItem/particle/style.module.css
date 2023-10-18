@@ -1,0 +1,32 @@
+.copy_button {
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background: rgb(235, 234, 234);
+
+  position: relative;
+}
+
+.copy_button img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  opacity: 0.8;
+}
+
+.list_text {
+  flex: 1 1 0%;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
