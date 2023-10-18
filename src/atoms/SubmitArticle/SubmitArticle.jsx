@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { linkIcon } from "../../assets";
 import { useLazyGetSummaryQuery } from "../../services/article";
 import UrlList from "../UrlList/UrlList";
+import SummarizedArticle from "../SummarizedArticle/SummarizedArticle";
 import s from "./particle/style.module.css";
 
 const SubmitArticle = () => {
@@ -53,8 +54,13 @@ const SubmitArticle = () => {
           <p>↵</p>
         </button>
       </form>
+      <UrlList articleList={articleHistory} />
       <div>
-        <UrlList articleList={articleHistory} />
+        <SummarizedArticle
+          isFetching={isFetching}
+          error={error}
+          articleSummary={article.summary}
+        />
       </div>
     </section>
   );
