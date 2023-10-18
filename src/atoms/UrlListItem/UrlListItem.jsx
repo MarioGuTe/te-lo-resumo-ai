@@ -1,5 +1,15 @@
+import { copy } from "../../assets";
+import s from "./particle/style.module.css";
+
 const UrlListItem = ({ articleUrl }) => {
-  return <p>this is list item{articleUrl}</p>;
+  return (
+    <>
+      <div className={s.copy_button}>
+        <img src={copy} alt="copy_icon" />
+      </div>
+      <p className={s.list_text}>{articleUrl}</p>
+    </>
+  );
 };
 
 export default UrlListItem;
