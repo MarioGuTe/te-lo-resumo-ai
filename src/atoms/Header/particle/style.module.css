@@ -24,7 +24,7 @@ header {
   font-size: 1.4rem;
 }
 
-button {
+header button {
   border-radius: 9999px;
   border-width: 1px;
   border-color: rgb(0 0 0);

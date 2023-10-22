@@ -11,11 +11,9 @@
 
 .copy_button img {
   position: absolute;
-  transform: translate(-25%, 15%);
-  width: 100%;
-  left: 50%;
-  bottom: 5%;
-  opacity: 0.8;
+  margin: 0 auto;
+  width: 60%;
+  opacity: 0.5;
 }
 
 .list_text {
@@ -27,4 +25,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: rgb(55 65 81/ 0.8);
 }
