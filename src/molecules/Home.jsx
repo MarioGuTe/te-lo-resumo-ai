@@ -8,13 +8,49 @@ import UrlList from "../atoms/UrlList/UrlList";
 import s from "./particle/style.module.css";
 
 const Home = () => {
+  // States
   const [article, setArticle] = useState({
     url: "",
     summary: "",
   });
 
   const [articleHistory, setArticleHistory] = useState([]);
+
+  const [urlCopy, setUrlCopy] = useState("");
+
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+
+  // Functions
+
+  async function onFormSubmit() {
+    const { data } = await getSummary({ articleUrl: article.url });
+
+    if (data?.summary) {
+      const newArticle = { ...article, summary: data.summary };
+      const updatedArticleHistory = [newArticle, ...articleHistory];
+      setArticle(newArticle);
+      setArticleHistory(updatedArticleHistory);
+      localStorage.setItem("articles", JSON.stringify(updatedArticleHistory));
+    }
+  }
+
+  function onFormChange(props) {
+    setArticle(props);
+  }
+
+  function updateArticleByList(articleSummary) {
+    setArticle(articleSummary);
+  }
+
+  function onCopyIconClick(itemUrl) {
+    setUrlCopy(itemUrl);
+    window.navigator.clipboard.writeText(itemUrl);
+    setTimeout(() => setUrlCopy(false), 3000);
+  }
+
+  console.log(urlCopy, "del home");
+
+  // Effects
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
@@ -25,27 +61,6 @@ const Home = () => {
       setArticleHistory(articlesFromLocalStorage);
     }
   }, []);
-
-  const onFormSubmit = async () => {
-    const { data } = await getSummary({ articleUrl: article.url });
-
-    if (data?.summary) {
-      const newArticle = { ...article, summary: data.summary };
-      const updatedArticleHistory = [newArticle, ...articleHistory];
-      setArticle(newArticle);
-      setArticleHistory(updatedArticleHistory);
-
-      localStorage.setItem("articles", JSON.stringify(updatedArticleHistory));
-    }
-  };
-
-  function onFormChange(props) {
-    setArticle(props);
-  }
-
-  function updateArticleByList(articleSummary) {
-    setArticle(articleSummary);
-  }
 
   return (
     <main>
@@ -63,6 +78,8 @@ const Home = () => {
         <UrlList
           articleList={articleHistory}
           onItemClick={updateArticleByList}
+          onCopyIconClick={onCopyIconClick}
+          urlCopy={urlCopy}
         />
         <SummarizedArticle
           isFetching={isFetching}
