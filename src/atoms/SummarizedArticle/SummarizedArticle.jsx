@@ -1,7 +1,6 @@
+import PropTypes from "prop-types";
 import { loader } from "../../assets";
 import s from "./particle/style.module.css";
-
-import PropTypes from "prop-types";
 
 const SummarizedArticle = ({ isFetching, articleSummary, error }) => {
   return (
@@ -9,18 +8,18 @@ const SummarizedArticle = ({ isFetching, articleSummary, error }) => {
       {isFetching ? (
         <img src={loader} alt="loader" />
       ) : error ? (
-        <p>
+        <p className={s.error_text}>
           Well, that wasn supposed to happen...
           <br />
-          <span></span>
+          <span>{error?.data?.error}</span>
         </p>
       ) : (
         articleSummary && (
-          <div>
+          <div className={s.summarized_text_container}>
             <h2>
-              Article <span>Summary</span>
+              <span>Artículo Sintetizado</span>
             </h2>
-            <div>
+            <div className={s.summary_box}>
               <p>{articleSummary}</p>
             </div>
           </div>
@@ -35,5 +34,5 @@ export default SummarizedArticle;
 SummarizedArticle.propTypes = {
   articleSummary: PropTypes.string,
   isFetching: PropTypes.bool,
-  error: PropTypes.any,
+  error: PropTypes.object,
 };
