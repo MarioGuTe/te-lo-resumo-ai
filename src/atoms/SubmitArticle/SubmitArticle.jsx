@@ -14,8 +14,9 @@ const SubmitArticle = ({ onFormSubmit, article, onFormChange }) => {
         <img src={linkIcon} alt="link_icon" />
         <input
           type="url"
-          placeholder="ingresa una URL"
+          placeholder="Ingresa una URL"
           onChange={(e) => onFormChange({ ...article, url: e.target.value })}
+          onClick={(e) => e.target.select()}
           value={article.url}
           required
         />
