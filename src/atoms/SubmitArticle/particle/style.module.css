@@ -16,6 +16,7 @@
   left: 0;
   margin: 0.5rem 0rem 0.5rem 0.75rem;
   width: 1.25rem;
+  opacity: 0.8;
 }
 
 .input_section input {
@@ -64,4 +65,10 @@
 .submit_button:hover {
   border-color: rgb(55 65 81);
   color: rgb(55 65 81);
+}
+
+@media (min-width: 768px) {
+  .input_section {
+    max-width: 60%;
+  }
 }

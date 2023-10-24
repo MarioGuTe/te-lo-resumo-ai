@@ -22,3 +22,9 @@
   border-radius: 0.5rem;
   cursor: pointer;
 }
+
+@media (min-width: 768px) {
+  .list_section {
+    max-width: 60%;
+  }
+}
