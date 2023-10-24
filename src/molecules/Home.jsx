@@ -31,6 +31,8 @@ const Home = () => {
       setArticle(newArticle);
       setArticleHistory(updatedArticleHistory);
       localStorage.setItem("articles", JSON.stringify(updatedArticleHistory));
+    } else {
+      setTimeout(() => window.location.reload(true), 3000);
     }
   }
 
@@ -45,10 +47,8 @@ const Home = () => {
   function onCopyIconClick(itemUrl) {
     setUrlCopy(itemUrl);
     window.navigator.clipboard.writeText(itemUrl);
-    setTimeout(() => setUrlCopy(false), 3000);
+    setTimeout(() => setUrlCopy(""), 3000);
   }
-
-  console.log(urlCopy, "del home");
 
   // Effects
 
@@ -57,7 +57,7 @@ const Home = () => {
       localStorage.getItem("articles")
     );
 
-    if (articlesFromLocalStorage.length > 0) {
+    if (articlesFromLocalStorage.length) {
       setArticleHistory(articlesFromLocalStorage);
     }
   }, []);
